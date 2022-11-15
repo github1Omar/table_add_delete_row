@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="box">
+    <form action="">
+        <div>
+                   <label for="name">Your name</label>
+                   <input type="text" placeholder="name" id="name">
+        </div> 
+        <div>
+                   <label for="age">Your age</label>
+                   <input type="text" placeholder="age" id="age" >
+        </div> 
+        <button class="btn_submit">submit</button>
+    </form>
+    </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+   
+    <script>
+            const info = document.querySelector('form');
+            const tbodyel = document.querySelector('tbody');
+            function addinfo(e){
+                e.preventDefault(); 
+               const name = document.getElementById('name').value
+               const age = document.getElementById('age').value
+               const btnsubmit = document.querySelector('.btn')
+               tbodyel.innerHTML += `
+               <tr>
+                    <th>${name}</th>
+                    <th>${age}</th>
+                    <th> <button class="btn btn_de"> Delete </button> </th>
+                </tr>
+               `;
+             
+               
+            }
+
+            function deleteel(e){
+                if(!e.target.classList.contains("btn_de")){
+                     return;
+                }else{
+                const btn = e.target;
+                btn.closest("tr").remove();
+            }
+
+            }
+            info.addEventListener('submit',addinfo)
+            tbodyel.addEventListener('click',deleteel)
+            
+            
+
+
+    </script>
+    
+</body>
+</html>
